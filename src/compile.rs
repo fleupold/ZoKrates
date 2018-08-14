@@ -104,7 +104,7 @@ fn compile_aux<T: Field>(path: PathBuf, should_include_gadgets: bool) -> Result<
     let program_ast = Importer::new().apply_imports(compiled_imports, program_ast_without_imports);
 
     // check semantics
-    Checker::new().check_program(program_ast.clone())?;
+    // Checker::new().check_program(program_ast.clone())?;
 
     // flatten input program
     let program_flattened =
