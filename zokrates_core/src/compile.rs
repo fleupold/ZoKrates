@@ -117,6 +117,9 @@ fn compile_aux<T: Field, R: BufRead, S: BufRead, E: Into<imports::Error>>(reader
     	
     let program_ast = Importer::new().apply_imports(compiled_imports, program_ast_without_imports);
 
+    // check semantics
+    let typed_ast = Checker::new().check_program(program_ast)?;
+
     // flatten input program
     let program_flattened =
         Flattener::new(T::get_required_bits()).flatten_program(typed_ast);
